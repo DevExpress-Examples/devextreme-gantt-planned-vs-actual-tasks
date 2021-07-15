@@ -1,0 +1,123 @@
+@using DevExtremeMvcApp1.Models
+ 
+@(Html.DevExtreme().Gantt<Task>()
+    .ID("gantt")
+    .RootValue("-1")
+    .Tasks(t => t
+        .DataSource(d => d.WebApi().Controller("SampleData").Key("Key").LoadAction("GetTasks"))
+        .KeyExpr("Key")
+        .TitleExpr("Title")
+        .ParentIdExpr("ParentKey")
+        .StartExpr("StartDate")
+        .EndExpr("EndDate")
+        .ProgressExpr("Progress")
+    )
+    .Dependencies(dep => dep
+        .DataSource(d => d.WebApi().Controller("SampleData").Key("Key").LoadAction("GetDependencies"))
+        .KeyExpr("Key")
+        .PredecessorIdExpr("PredecessorKey")
+        .SuccessorIdExpr("SuccessorKey")
+    )
+    .Resources(r => r
+        .DataSource(d => d.WebApi().Controller("SampleData").Key("Key").LoadAction("GetResources"))
+        .KeyExpr("Key")
+        .TextExpr("Name")
+    )
+    .ResourceAssignments(ra => ra
+        .DataSource(d => d.WebApi().Controller("SampleData").Key("Key").LoadAction("GetResourceAssignments"))
+        .KeyExpr("Key")
+        .TaskIdExpr("TaskKey")
+        .ResourceIdExpr("ResourceKey")
+    )
+    .Columns(columns => {
+        columns.AddFor(m => m.Title)
+            .Caption("Title")
+            .Width(150);
+        columns.AddFor(m => m.StartDate)
+         .Visible(false);
+        columns.AddFor(m => m.ActualStartDate)
+           .Visible(false);
+        columns.AddFor(m => m.EndDate)
+           .Visible(false);
+        columns.AddFor(m => m.ActualEndDate)
+           .Visible(false);
+        columns.AddFor(m => m.Progress)
+         .Visible(false);
+
+    })
+    .Toolbar(t => {
+        t.Items(i => {
+            i.Add().Name(GanttToolbarItem.Undo);
+            i.Add().Name(GanttToolbarItem.Redo);
+            i.Add().Name(GanttToolbarItem.Separator);
+            i.Add().Name(GanttToolbarItem.CollapseAll);
+            i.Add().Name(GanttToolbarItem.ExpandAll);
+            i.Add().Name(GanttToolbarItem.Separator);
+            i.Add().Name(GanttToolbarItem.ZoomIn);
+            i.Add().Name(GanttToolbarItem.ZoomOut);
+        });
+    })
+    .TaskContentTemplate(new JS("getTaskContentTemplate"))
+    .ScaleType(GanttScaleType.Days)
+    .TaskListWidth(400)
+
+)
+
+<script>
+ 
+    function getTaskContentTemplate(item, container) {
+     
+        var resource = item.taskResources[0];
+         
+        var color = item.taskData.Key % 6;
+        var taskWidth = item.taskSize.width + "px;";
+        var $customContainer = $(document.createElement("div"));
+        var $plannedCustomContainer = $(document.createElement("div"))
+            .addClass("custom-task")
+            .attr("style", "width:" + taskWidth)
+            .addClass("custom-task-color-" + color).appendTo($customContainer);
+        
+        
+
+        var $wrapper = $(document.createElement("div"))
+            .addClass("custom-task-wrapper")
+            .appendTo($plannedCustomContainer);
+
+        $(document.createElement("div"))
+            .addClass("custom-task-title")
+            .text(item.taskData.Title)
+            .appendTo($wrapper);
+        $(document.createElement("div"))
+            .addClass("custom-task-row")
+            .text(resource ? resource.text : "")
+            .appendTo($wrapper);
+
+        $(document.createElement("div"))
+            .addClass("custom-task-progress")
+            .attr("style", "width:" + (parseFloat(item.taskData.Progress)) + "%;")
+            .appendTo($plannedCustomContainer);
+
+
+        var taskData = item.taskData;
+        var taskRange = taskData.EndDate - taskData.StartDate;
+        var tickSize = item.taskSize.width / taskRange;
+
+        var actualTaskDelta = new Date(taskData.ActualStartDate) - taskData.StartDate;
+        var actualTaskRange = new Date(taskData.ActualEndDate) - new Date(taskData.ActualStartDate);
+
+        var actaulTaskWidth = actualTaskRange * tickSize;
+        var actaulTaskWidthPx = Math.round(actaulTaskWidth) + "px";
+
+        var actualTaskLeftPosition = actualTaskDelta * tickSize;
+        var actualTaskLeftPositionPx = Math.round(actualTaskLeftPosition) + "px";
+        var $actualCustomContainer = $(document.createElement("div"))
+            .addClass("custom-task-2")
+            .attr("style", "width:" + actaulTaskWidthPx + "; left:" + actualTaskLeftPositionPx);
+        $actualCustomContainer.appendTo($customContainer);
+        return $customContainer;
+    }
+
+ 
+
+
+</script>
