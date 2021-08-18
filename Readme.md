@@ -14,7 +14,10 @@ The main idea is to create two HTML div elements and add them to a task containe
 The second element is for an actual task. Its size and position are [calculated](https://github.com/DevExpress-Examples/gantt-for-java-script-planned-vs-actual-tasks/blob/21.1.4+/CS/DevExtremeMvcApp1/Views/Home/Index.cshtml#L105) based on task data.
 
 See:
+
 [Index.cshtml](https://github.com/DevExpress-Examples/gantt-for-java-script-planned-vs-actual-tasks/blob/21.1.4+/CS/DevExtremeMvcApp1/Views/Home/Index.cshtml)
+
 [Layout.cshtml](https://github.com/DevExpress-Examples/gantt-for-java-script-planned-vs-actual-tasks/blob/21.1.4+/CS/DevExtremeMvcApp1/Views/Shared/_Layout.cshtml)
+
 [GanttDataProvider.cs](https://github.com/DevExpress-Examples/gantt-for-java-script-planned-vs-actual-tasks/blob/21.1.4+/CS/DevExtremeMvcApp1/Models/GanttDataProvider.cs)
 
