@@ -1,5 +1,5 @@
 @using DevExtremeMvcApp1.Models
- 
+
 @(Html.DevExtreme().Gantt<Task>()
     .ID("gantt")
     .RootValue("-1")
@@ -34,16 +34,15 @@
             .Caption("Title")
             .Width(150);
         columns.AddFor(m => m.StartDate)
-         .Visible(false);
+            .Visible(false);
         columns.AddFor(m => m.ActualStartDate)
-           .Visible(false);
+            .Visible(false);
         columns.AddFor(m => m.EndDate)
-           .Visible(false);
+            .Visible(false);
         columns.AddFor(m => m.ActualEndDate)
-           .Visible(false);
+            .Visible(false);
         columns.AddFor(m => m.Progress)
-         .Visible(false);
-
+            .Visible(false);
     })
     .Toolbar(t => {
         t.Items(i => {
@@ -64,60 +63,52 @@
 )
 
 <script>
- 
-    function getTaskContentTemplate(item, container) {
-     
-        var resource = item.taskResources[0];
-         
-        var color = item.taskData.Key % 6;
-        var taskWidth = item.taskSize.width + "px;";
-        var $customContainer = $(document.createElement("div"));
-        var $plannedCustomContainer = $(document.createElement("div"))
-            .addClass("custom-task")
-            .attr("style", "width:" + taskWidth)
-            .addClass("custom-task-color-" + color).appendTo($customContainer);
+    function getTaskContentTemplate(item) {
+        var $parentContainer = $(document.createElement("div"));
+
+        appendPlannedTask(item.taskData, item.taskResources[0], item.taskSize.width, $parentContainer);
+        appendActualTask(item.taskData, item.taskSize.width, $parentContainer);
         
-        
-
-        var $wrapper = $(document.createElement("div"))
-            .addClass("custom-task-wrapper")
-            .appendTo($plannedCustomContainer);
-
-        $(document.createElement("div"))
-            .addClass("custom-task-title")
-            .text(item.taskData.Title)
-            .appendTo($wrapper);
-        $(document.createElement("div"))
-            .addClass("custom-task-row")
-            .text(resource ? resource.text : "")
-            .appendTo($wrapper);
-
-        $(document.createElement("div"))
-            .addClass("custom-task-progress")
-            .attr("style", "width:" + (parseFloat(item.taskData.Progress)) + "%;")
-            .appendTo($plannedCustomContainer);
-
-
-        var taskData = item.taskData;
-        var taskRange = taskData.EndDate - taskData.StartDate;
-        var tickSize = item.taskSize.width / taskRange;
-
-        var actualTaskDelta = new Date(taskData.ActualStartDate) - taskData.StartDate;
-        var actualTaskRange = new Date(taskData.ActualEndDate) - new Date(taskData.ActualStartDate);
-
-        var actaulTaskWidth = actualTaskRange * tickSize;
-        var actaulTaskWidthPx = Math.round(actaulTaskWidth) + "px";
-
-        var actualTaskLeftPosition = actualTaskDelta * tickSize;
-        var actualTaskLeftPositionPx = Math.round(actualTaskLeftPosition) + "px";
-        var $actualCustomContainer = $(document.createElement("div"))
-            .addClass("custom-task-2")
-            .attr("style", "width:" + actaulTaskWidthPx + "; left:" + actualTaskLeftPositionPx);
-        $actualCustomContainer.appendTo($customContainer);
-        return $customContainer;
+        return $parentContainer;
     }
 
- 
+    function appendPlannedTask(taskData, resource, taskWidth, container) {
+        var $plannedTaskContainer = $(document.createElement("div"))
+            .addClass("planned-task")
+            .attr("style", "width:" + taskWidth + "px;")
+            .appendTo(container);
 
+        var $wrapper = $(document.createElement("div"))
+            .addClass("planned-task-wrapper")
+            .appendTo($plannedTaskContainer);
+
+        $(document.createElement("div"))
+            .addClass("planned-task-title")
+            .text(taskData.Title)
+            .appendTo($wrapper);
+        $(document.createElement("div"))
+            .addClass("planned-task-resource")
+            .text(resource? resource.text : "")
+            .appendTo($wrapper);
+
+        $(document.createElement("div"))
+            .addClass("planned-task-progress")
+            .attr("style", "width:" + (parseFloat(taskData.Progress)) + "%;")
+            .appendTo($plannedTaskContainer);
+    }
+    function appendActualTask(taskData, taskWidth, container) {
+        var taskRange = taskData.EndDate - taskData.StartDate;
+        var tickSize = taskWidth / taskRange;
+        var actualTaskOffset = new Date(taskData.ActualStartDate) - taskData.StartDate;
+        var actualTaskRange = new Date(taskData.ActualEndDate) - new Date(taskData.ActualStartDate);
+
+        var actualTaskWidth = Math.round(actualTaskRange * tickSize) + "px";
+        var actualTaskLeftPosition = Math.round(actualTaskOffset * tickSize) + "px";
+
+       $(document.createElement("div"))
+            .addClass("actual-task")
+            .attr("style", "width:" + actualTaskWidth + "; left:" + actualTaskLeftPosition)
+            .appendTo(container);
+    }
 
 </script>
