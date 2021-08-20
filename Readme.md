@@ -16,9 +16,7 @@ The second element is for an actual task. Its size and position are [calculated]
 <!-- default file list -->
 *Files to look at*:
 
-[Index.cshtml](https://github.com/DevExpress-Examples/gantt-for-java-script-planned-vs-actual-tasks/blob/21.1.4+/CS/DevExtremeMvcApp1/Views/Home/Index.cshtml)
-
-[Layout.cshtml](https://github.com/DevExpress-Examples/gantt-for-java-script-planned-vs-actual-tasks/blob/21.1.4+/CS/DevExtremeMvcApp1/Views/Shared/_Layout.cshtml)
-
-[GanttDataProvider.cs](https://github.com/DevExpress-Examples/gantt-for-java-script-planned-vs-actual-tasks/blob/21.1.4+/CS/DevExtremeMvcApp1/Models/GanttDataProvider.cs)
+* [Index.cshtml](https://github.com/DevExpress-Examples/gantt-for-java-script-planned-vs-actual-tasks/blob/21.1.4+/CS/DevExtremeMvcApp1/Views/Home/Index.cshtml)
+* [Layout.cshtml](https://github.com/DevExpress-Examples/gantt-for-java-script-planned-vs-actual-tasks/blob/21.1.4+/CS/DevExtremeMvcApp1/Views/Shared/_Layout.cshtml)
+* [GanttDataProvider.cs](https://github.com/DevExpress-Examples/gantt-for-java-script-planned-vs-actual-tasks/blob/21.1.4+/CS/DevExtremeMvcApp1/Models/GanttDataProvider.cs)
 <!-- default file list end -->
