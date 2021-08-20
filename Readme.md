@@ -11,13 +11,14 @@ The [taskContentTemplate](https://js.devexpress.com/Documentation/ApiReference/U
 
 The main idea is to create two HTML div elements and add them to a task container. The first element represents [planned](https://github.com/DevExpress-Examples/gantt-for-java-script-planned-vs-actual-tasks/blob/21.1.4+/CS/DevExtremeMvcApp1/Views/Home/Index.cshtml#L75) tasks. It is created based on the taskSize parameter.
 
-The second element is for an actual task. Its size and position are [calculated](https://github.com/DevExpress-Examples/gantt-for-java-script-planned-vs-actual-tasks/blob/21.1.4+/CS/DevExtremeMvcApp1/Views/Home/Index.cshtml#L105) based on task data. Appearance of actual tasks is defined by the [custom-task-2](https://github.com/DevExpress-Examples/gantt-for-java-script-planned-vs-actual-tasks/blob/21.1.4+/CS/DevExtremeMvcApp1/Views/Shared/_Layout.cshtml#L25) class. 
+The second element is for an actual task. Its size and position are [calculated](https://github.com/DevExpress-Examples/gantt-for-java-script-planned-vs-actual-tasks/blob/21.1.4+/CS/DevExtremeMvcApp1/Views/Home/Index.cshtml#L105) based on task data. Appearance of actual tasks is defined by the [actual-task](https://github.com/DevExpress-Examples/gantt-for-java-script-planned-vs-actual-tasks/blob/21.1.4+/CS/DevExtremeMvcApp1/Views/Shared/_Layout.cshtml#L25) class. 
 
-See:
+<!-- default file list -->
+*Files to look at*:
 
 [Index.cshtml](https://github.com/DevExpress-Examples/gantt-for-java-script-planned-vs-actual-tasks/blob/21.1.4+/CS/DevExtremeMvcApp1/Views/Home/Index.cshtml)
 
 [Layout.cshtml](https://github.com/DevExpress-Examples/gantt-for-java-script-planned-vs-actual-tasks/blob/21.1.4+/CS/DevExtremeMvcApp1/Views/Shared/_Layout.cshtml)
 
 [GanttDataProvider.cs](https://github.com/DevExpress-Examples/gantt-for-java-script-planned-vs-actual-tasks/blob/21.1.4+/CS/DevExtremeMvcApp1/Models/GanttDataProvider.cs)
-
+<!-- default file list end -->
