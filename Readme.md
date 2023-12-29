@@ -4,9 +4,6 @@
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
 # Gantt for DevExtreme - Planned vs actual tasks  
-<!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/386356088/)**
-<!-- run online end -->
 
 This example demonstrates how to display both actual and planned tasks in the Gantt chart area.
 
