@@ -30,7 +30,7 @@ The second element is for an actual task. Its size and position are [calculated]
 - [Getting Started with Gantt](https://js.devexpress.com/Documentation/Guide/UI_Components/Gantt/Getting_Started_with_Gantt/)
 - [taskContentTemplate](https://js.devexpress.com/jQuery/Documentation/ApiReference/UI_Components/dxGantt/Configuration/#taskContentTemplate)
 <!-- feedback -->
-## Does this example address your development requirements/objectives?
+## Does This Example Address Your Development Requirements/Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=devextreme-gantt-planned-vs-actual-tasks&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=devextreme-gantt-planned-vs-actual-tasks&~~~was_helpful=no)
 
