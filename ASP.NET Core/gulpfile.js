@@ -46,25 +46,25 @@ let dxtStyles = [
 let styles = dxtStyles;
 let scripts = [...defaultScripts, ...dxtScripts];
 
-/* // Gantt
+// Gantt
 scripts = [...defaultScripts, ...ganttScript, ...dxtScripts];
-styles = [...styles, ...ganttStyles];  
-*/
+styles = [...styles, ...ganttStyles];
 
-/* // Diagram 
-scripts = [...defaultScripts, ...diagramScript, ...dxtScripts]; 
+
+/* // Diagram
+scripts = [...defaultScripts, ...diagramScript, ...dxtScripts];
 styles = [...styles, ...diagramStyles];
 */
 
-/* // HtmlEditor 
+/* // HtmlEditor
 scripts = [...defaultScripts, ...quillScripts, dxtScripts];
 */
 
-/* // Export 
+/* // Export
 scripts = [...exportScripts, ...scripts];
 */
 
- /* // Full bundle 
+ /* // Full bundle
 
 scripts = [...exportScripts, ...defaultScripts, ...ganttScript, ...diagramScript, ...quillScripts, ...dxtScripts];
 styles = [...dxtStyles, ...diagramStyles, ...ganttStyles];
