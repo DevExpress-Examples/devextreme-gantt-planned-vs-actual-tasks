@@ -1,6 +1,6 @@
 # ASP.NET Core DevExtreme Example
 
-For more information about this example check the [Readme](../Readme.md).
+For more information about this example check the [Readme](../README.md).
 
 ## Build and Run
 
